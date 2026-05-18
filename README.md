@@ -1,12 +1,15 @@
-# ESLI Fault Localization — HMI
+# Fault Localization Using Modified Event Source Location Identification on Distribution Networks
 
-A desktop application for running and analyzing fault localization simulations using a modified Event Source Location Identification (ESLI) algorithm on radial distribution networks.
+**Raingel Vryse Mendoza, Grentson Suguitan, and Ludwig Huntley Vengco**  
+Electrical and Electronics Engineering Institute, University of the Philippines Diliman
+
+> The Event Source Location Identification (ESLI) algorithm is a PMU-based method for locating the source of power system events in radial distribution feeders. Fault localization is one such application: prior work identifies the faulted bus and its precise position within a line segment from pre- and post-fault PMU phasors. These formulations, however, assume passive networks and have not been validated on deeply branched multi-PMU configurations. This paper proposes two modifications: Source-Rooted Topological Propagation (SRTP), which restricts each PMU's propagation to its Minimum Spanning Tree (MST) path to the source bus to eliminate cross-branch error accumulation, and a DER fault current correction term ΔI_DER that accounts for PV inverter contributions during faults. Both modifications are evaluated on 12-bus and 28-bus radial test feeders under all shunt fault types. SRTP increases the Faulted Bus Localization Success Rate (FBLSR) from 32.6% to 88.9% on the 28-bus feeder. The DER correction reduces median fault localization error by up to 57% for asymmetric faults. The algorithm performed well over 15 years of load growth, and Monte Carlo analysis identifies line impedance accuracy as the dominant sensitivity factor for practical deployment.
 
 ---
 
-## Background
+## About the HMI
 
-The **Event Source Location Identification (ESLI)** algorithm is a PMU-based method for locating the source of power system events in radial distribution feeders. Applied to fault localization, it uses pre- and post-fault differential phasor measurements from PMUs to identify the faulted bus and its precise position within a line segment — without relying on current flow assumptions or labeled training data.
+A desktop application for running and analyzing fault localization simulations using the modified ESLI algorithm on radial distribution networks.
 
 This HMI implements two modifications to the base ESLI algorithm:
 
@@ -148,13 +151,3 @@ Note: large trial counts (e.g. >1000) may take several minutes. The run timeout 
 A FBLSR of 88.9% and MAFLE of 0% is the expected result on the 28-bus feeder with SRTP enabled under Constant Impedance loads and no DER, consistent with the published results.
 
 Under DER conditions, FBLSR may vary with PV penetration level and configuration. Line impedance uncertainty is the dominant sensitivity factor — accuracy degrades faster with impedance noise than with PMU measurement noise or DER injection uncertainty.
-
----
-
-## Authors
-
-Raingel Vryse Mendoza, Grentson Suguitan, and Ludwig Huntley Vengco  
-Electrical and Electronics Engineering Institute  
-University of the Philippines Diliman
-
-**Paper:** *Fault Localization Using Modified Event Source Location Identification on Distribution Networks*
